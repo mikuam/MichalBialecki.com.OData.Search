@@ -1,7 +1,9 @@
-﻿namespace MichalBialecki.com.OData.SmartSearch.Web
+﻿using System.Threading.Tasks;
+
+namespace MichalBialecki.com.OData.SmartSearch.Web
 {
     public interface IProfileService
     {
-        int AddProfiles(int count);
+        Task<int> AddProfiles(int count);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MichalBialecki.com.OData.SmartSearch.Data.Models
 {
-    public partial class Profiles
+    public partial class Profile
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }

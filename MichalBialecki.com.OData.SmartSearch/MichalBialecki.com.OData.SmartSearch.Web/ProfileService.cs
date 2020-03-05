@@ -1,10 +1,20 @@
-﻿using MichalBialecki.com.OData.SmartSearch.Data;
+﻿using System;
+using System.Threading.Tasks;
+using MichalBialecki.com.OData.SmartSearch.Data;
+using MichalBialecki.com.OData.SmartSearch.Data.Models;
 
 namespace MichalBialecki.com.OData.SmartSearch.Web
 {
     public class ProfileService : IProfileService
     {
-        public int AddProfiles(int count)
+        private readonly ILocalDBContext localDbContext;
+
+        public ProfileService(ILocalDBContext _localDbContext)
+        {
+            localDbContext = _localDbContext;
+        }
+
+        public async Task<int> AddProfiles(int count)
         {
             var profileGenerator = new ProfileGenerator();
 
@@ -19,11 +29,11 @@ namespace MichalBialecki.com.OData.SmartSearch.Web
 
                 var profiles = profileGenerator.GenerateProfiles(numberOfProfilesToInsert);
 
-                // insert
+                localDbContext.Profiles.AddRange(profiles);
+                await localDbContext.Instance.SaveChangesAsync();
 
                 generatedProfiles += numberOfProfilesToInsert;
             }
-
 
             return generatedProfiles;
         }

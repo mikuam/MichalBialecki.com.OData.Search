@@ -4,7 +4,7 @@ using System.IO;
 
 namespace MichalBialecki.com.OData.SmartSearch.Data.Models
 {
-    public partial class aspnetcoreContext : DbContext
+    public partial class aspnetcoreContext : DbContext, ILocalDBContext
     {
         public aspnetcoreContext()
         {
@@ -15,7 +15,9 @@ namespace MichalBialecki.com.OData.SmartSearch.Data.Models
         {
         }
 
-        public virtual DbSet<Profiles> Profiles { get; set; }
+        public DbContext Instance => this;
+
+        public virtual DbSet<Profile> Profiles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,22 +27,20 @@ namespace MichalBialecki.com.OData.SmartSearch.Data.Models
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json")
                     .Build();
-                var connectionString = configuration.GetConnectionString("DbCoreConnectionString");
+                var connectionString = configuration.GetConnectionString("LocalDB");
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Profiles>(entity =>
+            modelBuilder.Entity<Profile>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.City).HasMaxLength(50);
 
                 entity.Property(e => e.CompanyName).HasMaxLength(100);
 
-                entity.Property(e => e.Country).HasMaxLength(50);
+                entity.Property(e => e.Country).HasMaxLength(100);
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -56,15 +56,15 @@ namespace MichalBialecki.com.OData.SmartSearch.Data.Models
 
                 entity.Property(e => e.Notes).HasColumnType("text");
 
-                entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+                entity.Property(e => e.PhoneNumber).HasMaxLength(50);
 
-                entity.Property(e => e.Street).HasMaxLength(50);
+                entity.Property(e => e.Street).HasMaxLength(100);
 
                 entity.Property(e => e.UserName).HasMaxLength(100);
 
                 entity.Property(e => e.Website).HasMaxLength(200);
 
-                entity.Property(e => e.ZipCode).HasMaxLength(20);
+                entity.Property(e => e.ZipCode).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using MichalBialecki.com.OData.SmartSearch.Data.Models;
 using System;
 using System.Collections.Generic;
 
@@ -6,10 +7,10 @@ namespace MichalBialecki.com.OData.SmartSearch.Data
 {
     public class ProfileGenerator
     {
-        public List<ProfileDto> GenerateProfiles(int count)
+        public List<Profile> GenerateProfiles(int count)
         {
-            var profileGenerator = new Faker<ProfileDto>()
-                .RuleFor(p => p.Id, v => Guid.NewGuid().ToString())
+            var profileGenerator = new Faker<Profile>()
+                .RuleFor(p => p.Id, v => Guid.NewGuid())
                 .RuleFor(p => p.FirstName, v => v.Person.FirstName)
                 .RuleFor(p => p.LastName, v => v.Person.LastName)
                 .RuleFor(p => p.UserName, v => v.Person.UserName)

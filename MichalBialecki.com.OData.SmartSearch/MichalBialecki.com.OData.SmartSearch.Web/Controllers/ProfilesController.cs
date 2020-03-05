@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
 {
@@ -14,9 +15,9 @@ namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
         }
 
         [HttpPost]
-        public int GenerateProfiles(int count = 1000)
+        public async Task<int> GenerateProfiles(int count = 1000)
         {
-            var profilesAdded = _profileService.AddProfiles(count);
+            var profilesAdded = await _profileService.AddProfiles(count);
 
             return profilesAdded;
         }
