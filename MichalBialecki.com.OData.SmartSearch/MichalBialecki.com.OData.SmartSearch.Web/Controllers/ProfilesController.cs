@@ -1,25 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using MichalBialecki.com.OData.SmartSearch.Data.Models;
+using Microsoft.AspNet.OData;
+using Microsoft.EntityFrameworkCore;
 
 namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ProfilesController : ControllerBase
     {
-        private readonly IProfileService _profileService;
+        private readonly ILocalDBContext _localDbContext;
 
-        public ProfilesController(IProfileService profileService)
+        public ProfilesController(ILocalDBContext localDbContext)
         {
-            _profileService = profileService;
+            _localDbContext = localDbContext;
         }
 
-        [HttpPost]
-        public async Task<int> GenerateProfiles(int count = 1000)
+        [HttpGet]
+        [EnableQuery()]
+        public IQueryable<Profile> Get()
         {
-            var profilesAdded = await _profileService.AddProfiles(count);
-
-            return profilesAdded;
+            return _localDbContext.Profiles.AsNoTracking().AsQueryable();
         }
     }
 }

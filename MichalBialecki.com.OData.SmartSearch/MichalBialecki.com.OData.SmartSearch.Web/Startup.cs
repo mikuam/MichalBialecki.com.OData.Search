@@ -1,12 +1,15 @@
 using MichalBialecki.com.OData.SmartSearch.Data.Models;
+using MichalBialecki.com.OData.SmartSearch.Web.Controllers;
+using Microsoft.AspNet.OData.Builder;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
 namespace MichalBialecki.com.OData.SmartSearch.Web
@@ -23,7 +26,11 @@ namespace MichalBialecki.com.OData.SmartSearch.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(mvcOptions =>
+                mvcOptions.EnableEndpointRouting = false);
+
+            services.AddOData();
+
             services.AddScoped<IProfileService, ProfileService>();
 
             // Entity Framework
@@ -73,11 +80,10 @@ namespace MichalBialecki.com.OData.SmartSearch.Web
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routeBuilder =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                routeBuilder.Select().Filter().OrderBy().MaxTop(1000);
+                routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
 
             app.UseSpa(spa =>
@@ -89,6 +95,14 @@ namespace MichalBialecki.com.OData.SmartSearch.Web
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+        }
+
+        private IEdmModel GetEdmModel()
+        {
+            var odataBuilder = new ODataConventionModelBuilder();
+            odataBuilder.EntitySet<Profile>("Profiles");
+
+            return odataBuilder.GetEdmModel();
         }
     }
 }
