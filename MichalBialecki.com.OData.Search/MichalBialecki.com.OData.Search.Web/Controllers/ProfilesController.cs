@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using MichalBialecki.com.OData.SmartSearch.Data.Models;
+using MichalBialecki.com.OData.Search.Data.Models;
 using Microsoft.AspNet.OData;
 using Microsoft.EntityFrameworkCore;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
+namespace MichalBialecki.com.OData.Search.Web.Controllers
 {
     public class ProfilesController : ControllerBase
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichalBialecki.com.OData.SmartSearch.Web", "MichalBialecki.com.OData.SmartSearch.Web\MichalBialecki.com.OData.SmartSearch.Web.csproj", "{02C61169-7D1C-4875-B057-3FC7A309BB87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MichalBialecki.com.OData.Search.Web", "MichalBialecki.com.OData.Search.Web\MichalBialecki.com.OData.Search.Web.csproj", "{02C61169-7D1C-4875-B057-3FC7A309BB87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichalBialecki.com.OData.SmartSearch.Data", "MichalBialecki.com.OData.SmartSearch.Data\MichalBialecki.com.OData.SmartSearch.Data.csproj", "{73A03B80-2BD6-49C7-A4AA-D1E55E78A748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MichalBialecki.com.OData.Search.Data", "MichalBialecki.com.OData.Search.Data\MichalBialecki.com.OData.Search.Data.csproj", "{73A03B80-2BD6-49C7-A4AA-D1E55E78A748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

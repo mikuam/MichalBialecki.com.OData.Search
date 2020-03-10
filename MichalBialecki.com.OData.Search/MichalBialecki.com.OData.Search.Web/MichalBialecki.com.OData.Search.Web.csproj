@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MichalBialecki.com.OData.SmartSearch.Data\MichalBialecki.com.OData.SmartSearch.Data.csproj" />
+    <ProjectReference Include="..\MichalBialecki.com.OData.Search.Data\MichalBialecki.com.OData.Search.Data.csproj" />
+    <ProjectReference Include="..\MichalBialecki.com.OData.Search.Data\MichalBialecki.com.OData.Search.Data.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

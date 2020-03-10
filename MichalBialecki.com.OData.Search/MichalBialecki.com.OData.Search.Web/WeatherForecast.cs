@@ -1,6 +1,6 @@
 using System;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web
+namespace MichalBialecki.com.OData.Search.Web
 {
     public class WeatherForecast
     {

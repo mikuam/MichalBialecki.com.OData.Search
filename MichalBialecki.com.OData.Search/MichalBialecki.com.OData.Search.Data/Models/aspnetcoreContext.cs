@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace MichalBialecki.com.OData.SmartSearch.Data.Models
+namespace MichalBialecki.com.OData.Search.Data.Models
 {
     public partial class aspnetcoreContext : DbContext, ILocalDBContext
     {

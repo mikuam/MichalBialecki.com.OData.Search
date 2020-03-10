@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
+namespace MichalBialecki.com.OData.Search.Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]

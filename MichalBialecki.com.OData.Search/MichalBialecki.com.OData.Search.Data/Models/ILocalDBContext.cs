@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace MichalBialecki.com.OData.SmartSearch.Data.Models
+namespace MichalBialecki.com.OData.Search.Data.Models
 {
     public interface ILocalDBContext
     {

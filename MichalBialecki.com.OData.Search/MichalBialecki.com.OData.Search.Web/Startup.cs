@@ -1,5 +1,5 @@
-using MichalBialecki.com.OData.SmartSearch.Data.Models;
-using MichalBialecki.com.OData.SmartSearch.Web.Controllers;
+using MichalBialecki.com.OData.Search.Data.Models;
+using MichalBialecki.com.OData.Search.Web.Controllers;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web
+namespace MichalBialecki.com.OData.Search.Web
 {
     public class Startup
     {

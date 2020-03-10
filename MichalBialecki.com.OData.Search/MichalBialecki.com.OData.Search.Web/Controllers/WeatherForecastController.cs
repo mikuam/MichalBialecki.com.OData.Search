@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web.Controllers
+namespace MichalBialecki.com.OData.Search.Web.Controllers
 {
     [ApiController]
     [Route("[controller]")]

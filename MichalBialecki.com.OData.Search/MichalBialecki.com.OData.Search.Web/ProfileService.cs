@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MichalBialecki.com.OData.SmartSearch.Data;
-using MichalBialecki.com.OData.SmartSearch.Data.Models;
+using MichalBialecki.com.OData.Search.Data;
+using MichalBialecki.com.OData.Search.Data.Models;
 
-namespace MichalBialecki.com.OData.SmartSearch.Web
+namespace MichalBialecki.com.OData.Search.Web
 {
     public class ProfileService : IProfileService
     {
