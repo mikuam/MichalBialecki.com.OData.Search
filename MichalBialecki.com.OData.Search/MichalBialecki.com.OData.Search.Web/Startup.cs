@@ -60,10 +60,10 @@ namespace MichalBialecki.com.OData.Search.Web
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+
             }
 
+            app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -82,7 +82,7 @@ namespace MichalBialecki.com.OData.Search.Web
 
             app.UseMvc(routeBuilder =>
             {
-                routeBuilder.Select().Filter().OrderBy().MaxTop(1000);
+                routeBuilder.Select().Expand().Filter().OrderBy().MaxTop(1000).Count();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
 
