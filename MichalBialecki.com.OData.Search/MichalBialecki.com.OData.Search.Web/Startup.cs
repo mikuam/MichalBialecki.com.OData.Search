@@ -34,7 +34,7 @@ namespace MichalBialecki.com.OData.Search.Web
             services.AddScoped<IProfileService, ProfileService>();
 
             // Entity Framework
-            services.AddDbContext<ILocalDBContext, aspnetcoreContext>(options =>
+            services.AddDbContext<aspnetcoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
 
             // Register the Swagger generator, defining 1 or more Swagger documents

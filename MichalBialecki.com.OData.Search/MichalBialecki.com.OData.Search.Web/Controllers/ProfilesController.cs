@@ -8,9 +8,9 @@ namespace MichalBialecki.com.OData.Search.Web.Controllers
 {
     public class ProfilesController : ControllerBase
     {
-        private readonly ILocalDBContext _localDbContext;
+        private readonly aspnetcoreContext _localDbContext;
 
-        public ProfilesController(ILocalDBContext localDbContext)
+        public ProfilesController(aspnetcoreContext localDbContext)
         {
             _localDbContext = localDbContext;
         }

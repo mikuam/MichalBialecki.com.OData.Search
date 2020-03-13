@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MichalBialecki.com.OData.Search.Data;
 using MichalBialecki.com.OData.Search.Data.Models;
 
@@ -7,9 +6,9 @@ namespace MichalBialecki.com.OData.Search.Web
 {
     public class ProfileService : IProfileService
     {
-        private readonly ILocalDBContext localDbContext;
+        private readonly aspnetcoreContext localDbContext;
 
-        public ProfileService(ILocalDBContext _localDbContext)
+        public ProfileService(aspnetcoreContext _localDbContext)
         {
             localDbContext = _localDbContext;
         }

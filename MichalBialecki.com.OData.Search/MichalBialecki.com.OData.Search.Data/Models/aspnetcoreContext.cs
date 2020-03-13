@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace MichalBialecki.com.OData.Search.Data.Models
 {
-    public partial class aspnetcoreContext : DbContext, ILocalDBContext
+    public partial class aspnetcoreContext : DbContext
     {
         public aspnetcoreContext()
         {
@@ -21,15 +19,6 @@ namespace MichalBialecki.com.OData.Search.Data.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
-                    .Build();
-                var connectionString = configuration.GetConnectionString("LocalDB");
-                optionsBuilder.UseSqlServer(connectionString);
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
