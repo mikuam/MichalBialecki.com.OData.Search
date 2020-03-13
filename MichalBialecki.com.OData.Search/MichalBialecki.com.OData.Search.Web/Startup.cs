@@ -1,5 +1,4 @@
 using MichalBialecki.com.OData.Search.Data.Models;
-using MichalBialecki.com.OData.Search.Web.Controllers;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +35,10 @@ namespace MichalBialecki.com.OData.Search.Web
             // Entity Framework
             services.AddDbContext<aspnetcoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
+
+            services
+                .AddHealthChecks()
+                .AddDbContextCheck<aspnetcoreContext>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -84,6 +87,11 @@ namespace MichalBialecki.com.OData.Search.Web
             {
                 routeBuilder.Select().Expand().Filter().OrderBy().MaxTop(1000).Count();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/health");
             });
 
             app.UseSpa(spa =>
