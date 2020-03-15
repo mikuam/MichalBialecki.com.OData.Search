@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import useConstant from 'use-constant';
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
 export default () => {
 
@@ -13,17 +15,17 @@ export default () => {
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
-        populateProfileData(event.target.value, lastName, city);
+        debouncedPopulateProfileData(event.target.value, lastName, city);
     }
 
     const handleLastNameChange = (event) => {
         setLastName(event.target.value);
-        populateProfileData(firstName, event.target.value, city);
+        debouncedPopulateProfileData(firstName, event.target.value, city);
     }
 
     const handleCityChange = (event) => {
         setLastName(event.target.value);
-        populateProfileData(firstName, lastName, event.target.value);
+        debouncedPopulateProfileData(firstName, lastName, event.target.value);
     }
 
     const populateProfileData = async (fn, ln, ci) => {
@@ -51,6 +53,8 @@ export default () => {
         const data = await response.json();
         setProfiles(data.value);
     }
+
+    const debouncedPopulateProfileData = useConstant(() => AwesomeDebouncePromise(populateProfileData, 300));
 
     return (
         <div>
