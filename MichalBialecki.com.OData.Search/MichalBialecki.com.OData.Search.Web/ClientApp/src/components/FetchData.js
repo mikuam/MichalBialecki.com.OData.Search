@@ -24,7 +24,7 @@ export default () => {
     }
 
     const handleCityChange = (event) => {
-        setLastName(event.target.value);
+        setCity(event.target.value);
         debouncedPopulateProfileData(firstName, lastName, event.target.value);
     }
 
