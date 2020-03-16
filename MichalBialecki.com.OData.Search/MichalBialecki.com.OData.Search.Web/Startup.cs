@@ -1,6 +1,7 @@
 using MichalBialecki.com.OData.Search.Data.Models;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Formatter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -8,8 +9,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using System.Linq;
 
 namespace MichalBialecki.com.OData.Search.Web
 {
@@ -31,6 +34,19 @@ namespace MichalBialecki.com.OData.Search.Web
             services.AddOData();
 
             services.AddScoped<IProfileService, ProfileService>();
+
+            services.AddMvcCore(options => 
+                // Workaround to support Swagger: https://github.com/OData/WebApi/issues/1177
+                {
+                    foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                    {
+                        outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                    }
+                    foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                    {
+                        inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                    }
+                });
 
             // Entity Framework
             services.AddDbContext<aspnetcoreContext>(options =>
@@ -87,6 +103,7 @@ namespace MichalBialecki.com.OData.Search.Web
             {
                 routeBuilder.Select().Expand().Filter().OrderBy().MaxTop(1000).Count();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
+                routeBuilder.EnableDependencyInjection();
             });
 
             app.UseEndpoints(endpoints =>
