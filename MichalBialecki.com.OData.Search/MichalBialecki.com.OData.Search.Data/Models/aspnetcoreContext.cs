@@ -25,6 +25,8 @@ namespace MichalBialecki.com.OData.Search.Data.Models
         {
             modelBuilder.Entity<Profile>(entity =>
             {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
                 entity.Property(e => e.City).HasMaxLength(50);
 
                 entity.Property(e => e.CompanyName).HasMaxLength(100);
