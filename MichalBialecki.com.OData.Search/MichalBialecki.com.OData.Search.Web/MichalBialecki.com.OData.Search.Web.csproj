@@ -10,8 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="29.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.4.0-beta" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
   </ItemGroup>
@@ -21,11 +28,6 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MichalBialecki.com.OData.Search.Data\MichalBialecki.com.OData.Search.Data.csproj" />
-    <ProjectReference Include="..\MichalBialecki.com.OData.Search.Data\MichalBialecki.com.OData.Search.Data.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

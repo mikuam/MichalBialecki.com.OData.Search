@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MichalBialecki.com.OData.Search.Data.Models
+namespace MichalBialecki.com.OData.Search.Web.Models
 {
     public partial class Profile
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using MichalBialecki.com.OData.Search.Data;
-using MichalBialecki.com.OData.Search.Data.Models;
+using MichalBialecki.com.OData.Search.Web.Models;
+using MichalBialecki.com.OData.Search.Web.Profiles;
 
 namespace MichalBialecki.com.OData.Search.Web
 {
@@ -29,7 +29,7 @@ namespace MichalBialecki.com.OData.Search.Web
                 var profiles = profileGenerator.GenerateProfiles(numberOfProfilesToInsert);
 
                 localDbContext.Profiles.AddRange(profiles);
-                await localDbContext.Instance.SaveChangesAsync();
+                await localDbContext.SaveChangesAsync();
 
                 generatedProfiles += numberOfProfilesToInsert;
             }

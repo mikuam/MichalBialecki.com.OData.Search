@@ -1,9 +1,9 @@
 ﻿using Bogus;
-using MichalBialecki.com.OData.Search.Data.Models;
+using MichalBialecki.com.OData.Search.Web.Models;
 using System;
 using System.Collections.Generic;
 
-namespace MichalBialecki.com.OData.Search.Data
+namespace MichalBialecki.com.OData.Search.Web.Profiles
 {
     public class ProfileGenerator
     {

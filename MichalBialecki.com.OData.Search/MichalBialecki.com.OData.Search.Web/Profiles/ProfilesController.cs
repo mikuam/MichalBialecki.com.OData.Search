@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MichalBialecki.com.OData.Search.Data.Models;
 using Microsoft.AspNet.OData;
 using Microsoft.EntityFrameworkCore;
+using MichalBialecki.com.OData.Search.Web.Models;
 
-namespace MichalBialecki.com.OData.Search.Web.Controllers
+namespace MichalBialecki.com.OData.Search.Web.Profiles
 {
     [Route("api/[controller]")]
     [ApiController]

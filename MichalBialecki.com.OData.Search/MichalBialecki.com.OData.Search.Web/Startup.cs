@@ -1,4 +1,4 @@
-using MichalBialecki.com.OData.Search.Data.Models;
+using MichalBialecki.com.OData.Search.Web.Models;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Formatter;
@@ -120,6 +120,20 @@ namespace MichalBialecki.com.OData.Search.Web
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            UpgradeDatabase(app);
+        }
+
+        private void UpgradeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<aspnetcoreContext>();
+                if (context != null && context.Database != null)
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
 
         private IEdmModel GetEdmModel()
