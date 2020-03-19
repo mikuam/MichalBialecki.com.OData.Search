@@ -1,5 +1,5 @@
 # MichalBialecki.com.OData.Search
-This project is an example how to use flexibility of OData and combine it with React app. The whole solution is widely explaind in my blog post: http://www.michalbialecki.com/2020/03/19/odata-as-a-flexible-data-feed-for-react-search/
+This project is an example how to use flexibility of OData and combine it with React app. The whole solution is widely explained in my blog post: http://www.michalbialecki.com/2020/03/19/odata-as-a-flexible-data-feed-for-react-search/
 
 ## Technology stack
 In this project I used most up-to-date frameworks and packages available. So this is:
@@ -9,10 +9,10 @@ In this project I used most up-to-date frameworks and packages available. So thi
 - React, version 16 with many other front-end packages
 
 ## Core features of this app
-I created it as an example how any kind of search and filtering on the fron-end can be easily solved on the back-end side with OData integration.
-- OData is a great technology that is very easy and fast to integrate with Entity Framework Core and gives powerful filtering options. It allows you to define operations in url like: filtering, ordering, getting count and top elements. Without and coding needed, it generates a SQL scripts and run it agains MS SQL database.
+I created it as an example how any kind of search and filtering on the front-end can be easily solved on the back-end side with OData integration.
+- OData is a great technology that is very easy and fast to integrate with Entity Framework Core and gives powerful filtering options. It allows you to define operations in url like: filtering, ordering, getting count and top elements. Without and coding needed, it generates a SQL scripts and run it against MS SQL database.
 - to ease working with the API, I integrated Swagger, an interactive documentation, that is available under `/swagger` url
-- I used hooks in React to follow the latest standards and implement the greatest coding experance. However, I don't feel very strong in React, so please don't take front-end part as a best solution reference
+- I used hooks in React to follow the latest standards and implement the greatest coding experience. However, I don't feel very strong in React, so please don't take front-end part as a best solution reference
 
 ## How to run the project
 Note that this project needs to be connected to MS SQL database, so you would need to have one to run it
