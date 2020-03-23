@@ -21,6 +21,9 @@ Note that this project needs to be connected to MS SQL database, so you would ne
 3. Go to `/MichalBialecki.com.OData.Search.Web/ClientApp` and run command `npm install`
 4. Go back to `/MichalBialecki.com.OData.Search.Web` and run command `dotnet run`
 
+Note that there is also a Swagger installed, so you can see all endpoints when you go to url `/swagger`.
+You can also generate profiles to fill in you DB. To do so just run the POST request on url `/api/Profiles/GenerateProfiles`.
+
 ## How it looks in practice
 I recorded a short video that shows how it works in practice. Have a look:
 
